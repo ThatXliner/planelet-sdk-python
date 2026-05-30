@@ -3,7 +3,7 @@ import hmac
 import json
 import random
 
-from superplane import (
+from planelet_sdk import (
     ActionContext,
     CleanupContext,
     HttpResponse,
