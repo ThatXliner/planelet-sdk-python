@@ -85,3 +85,9 @@ class WebhookResult:
 class WebhookSkip:
     reason: str | None = None
     response: HttpResponse | None = None
+
+
+@dataclass
+class WebhookError:
+    error: str
+    status: int | None = None

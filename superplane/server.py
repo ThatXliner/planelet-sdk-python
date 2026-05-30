@@ -12,6 +12,7 @@ from .types import (
     HttpResponse,
     SetupContext,
     WebhookContext,
+    WebhookError,
     WebhookInfo,
     WebhookRequest,
     WebhookResult,
@@ -252,6 +253,12 @@ def build_app(planelet: Planelet) -> FastAPI:
             if http_resp:
                 resp["response"] = http_resp
             return JSONResponse(resp)
+
+        if isinstance(result, WebhookError):
+            err_resp: dict[str, Any] = {"success": False, "error": result.error}
+            if result.status is not None:
+                err_resp["status"] = result.status
+            return JSONResponse(err_resp, status_code=result.status or 500)
 
         return JSONResponse(
             {"success": False, "error": "Webhook handler returned invalid type"},

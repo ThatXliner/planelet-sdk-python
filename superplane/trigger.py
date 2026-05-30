@@ -7,6 +7,7 @@ from .types import (
     Param,
     SetupContext,
     WebhookContext,
+    WebhookError,
     WebhookResult,
     WebhookSkip,
 )
@@ -14,7 +15,7 @@ from .types import (
 SetupHandler = Callable[[SetupContext], Awaitable[dict[str, Any] | None]]
 CleanupHandler = Callable[[CleanupContext], Awaitable[None]]
 WebhookHandler = Callable[
-    [WebhookContext], Awaitable[WebhookResult | WebhookSkip]
+    [WebhookContext], Awaitable[WebhookResult | WebhookSkip | WebhookError]
 ]
 
 
