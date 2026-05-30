@@ -60,6 +60,47 @@ async def get_quote(ctx: ActionContext) -> dict:
     return {"quote": quote["text"], "author": quote["author"]}
 
 
+@planelet.action(
+    "greet",
+    label="Generate Greeting",
+    description="Generate a personalized greeting message",
+    parameters={
+        "name": Param(
+            label="Name",
+            type="string",
+            description="Name of the person to greet",
+            required=True,
+        ),
+        "style": Param(
+            label="Style",
+            type="select",
+            description="Greeting style",
+            required=True,
+            options=[
+                ParamOption(label="Formal", value="formal"),
+                ParamOption(label="Casual", value="casual"),
+                ParamOption(label="Enthusiastic", value="enthusiastic"),
+            ],
+        ),
+    },
+)
+async def greet(ctx: ActionContext) -> dict:
+    name = ctx.parameters["name"]
+    style = ctx.parameters.get("style", "casual")
+
+    greetings = {
+        "formal": f"Good day, {name}. It is a pleasure to make your acquaintance.",
+        "casual": f"Hey {name}, what's up?",
+        "enthusiastic": f"OMG {name}!!! SO GREAT to see you!",
+    }
+
+    return {
+        "greeting": greetings.get(style, greetings["casual"]),
+        "style": style,
+        "recipient": name,
+    }
+
+
 # ── Trigger (planelet webhook) ───────────────────────────────────────
 # Triggers are external-service-driven: an outside system POSTs to a
 # webhook URL. The trigger lifecycle has three phases:
