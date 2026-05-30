@@ -54,7 +54,7 @@ python main.py
 
 ## Documentation
 
-See [PLANELET-DOCS.md](PLANELET-DOCS.md) for the full SDK reference, trigger/webhook guide, and protocol details.
+See [DOCS.md](DOCS.md) for the full SDK reference, trigger/webhook guide, and protocol details.
 
 ## Example
 
