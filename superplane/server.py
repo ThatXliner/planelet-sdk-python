@@ -47,14 +47,12 @@ def _serialize_params(parameters: dict[str, Any]) -> list[dict[str, Any]]:
 def _serialize_http_response(resp: HttpResponse | None) -> dict[str, Any] | None:
     if resp is None:
         return None
-    out: dict[str, Any] = {}
-    if resp.status != 200:
-        out["status"] = resp.status
+    out: dict[str, Any] = {"status": resp.status}
     if resp.headers:
         out["headers"] = resp.headers
     if resp.body is not None:
         out["body"] = resp.body
-    return out or None
+    return out
 
 
 def build_app(planelet: Planelet) -> FastAPI:
