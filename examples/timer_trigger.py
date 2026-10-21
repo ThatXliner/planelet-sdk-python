@@ -5,7 +5,7 @@ The planelet starts a background loop on setup and pushes events directly
 to SuperPlane via its HTTP API. No webhook URL is involved — this is the
 "On Planelet Event" pattern (as opposed to "On Planelet Webhook").
 
-Requires: pip install httpx
+Requires: pip install ".[examples]"
 
 Usage:
   SUPERPLANE_BASE_URL=http://localhost:8080 \
