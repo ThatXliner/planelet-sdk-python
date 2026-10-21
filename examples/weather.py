@@ -4,7 +4,7 @@ Open-Meteo Weather planelet — demonstrates actions.
 Usage:
   python examples/weather.py
 
-Requires: pip install httpx
+Requires: pip install ".[examples]"
 """
 
 from __future__ import annotations

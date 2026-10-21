@@ -4,7 +4,7 @@ RSS feed trigger — demonstrates the event-based trigger model with polling.
 Polls an RSS or Atom feed on an interval, tracks seen entries, and emits
 events for new items via the SuperPlane event API.
 
-Requires: pip install httpx
+Requires: pip install ".[examples]"
 
 Usage:
   SUPERPLANE_BASE_URL=http://localhost:8080 \
